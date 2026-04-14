@@ -4,33 +4,39 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [logoVisible, setLogoVisible] = useState(false);
-  const [zooming, setZooming] = useState(false);
+  const [zoomStarted, setZoomStarted] = useState(false);
   const [transitioned, setTransitioned] = useState(false);
 
   useEffect(() => {
-    // Fade in the logo shortly after load
+    const logoInMs = 300;
+    const logoOutMs = 2500;
+    const logoFadeMs = 800;
+    const pauseAfterLogoMs = 2000;
+    const zoomDurationMs = 2500;
+
+    const logoFadeEndMs = logoOutMs + logoFadeMs;
+    const zoomStartMs = logoFadeEndMs + pauseAfterLogoMs;
+
     const logoInTimer = setTimeout(() => {
       setLogoVisible(true);
-    }, 300);
+    }, logoInMs);
 
-    // Blur kicks in right when the zoom starts (2s delay)
-    const blurTimer = setTimeout(() => {
-      setZooming(true);
-    }, 2000);
-
-    // Logo fades out after 3s
     const logoOutTimer = setTimeout(() => {
       setLogoVisible(false);
-    }, 2500);
+    }, logoOutMs);
+
+    const zoomTimer = setTimeout(() => {
+      setZoomStarted(true);
+    }, zoomStartMs);
 
     const fadeTimer = setTimeout(() => {
       setTransitioned(true);
-    }, 4500);
+    }, zoomStartMs + zoomDurationMs);
 
     return () => {
       clearTimeout(logoInTimer);
-      clearTimeout(blurTimer);
       clearTimeout(logoOutTimer);
+      clearTimeout(zoomTimer);
       clearTimeout(fadeTimer);
     };
   }, []);
@@ -43,9 +49,9 @@ export default function Home() {
         style={{ backgroundImage: "url('/2.jpeg')" }}
       />
 
-      {/* First image with zoom animation, fades out */}
+      {/* First image — zoom only after logo + 2s pause */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-slow-zoom transition-opacity duration-[2000ms] ease-in-out"
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
         style={{
           backgroundImage: "url('/1.png')",
           opacity: transitioned ? 0 : 1,
@@ -62,18 +68,6 @@ export default function Home() {
         />
       </div>
 
-      {/* Edge blur / vignette overlay — fades in with zoom, fades out with transition */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-[1000ms] ease-in-out"
-        style={{
-          boxShadow: "inset 0 0 150px 60px rgba(0, 0, 0, 0.6)",
-          mask: "radial-gradient(ellipse 50% 50% at center, transparent 30%, black 100%)",
-          WebkitMask:
-            "radial-gradient(ellipse 50% 50% at center, transparent 30%, black 100%)",
-          backdropFilter: "blur(6px)",
-          opacity: transitioned ? 0 : zooming ? 1 : 0,
-        }}
-      />
     </div>
   );
 }

@@ -36,5 +36,5 @@ body {
 
 .animate-slow-zoom {
   transform-origin: 64% 54%;
-  animation: slow-zoom 2.5s ease-in-out 2s forwards;
+  animation: slow-zoom 2.5s ease-in-out forwards;
 }
