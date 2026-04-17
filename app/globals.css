@@ -38,3 +38,17 @@ body {
   transform-origin: 64% 54%;
   animation: slow-zoom 2.5s ease-in-out forwards;
 }
+
+.banner-side .banner-heading,
+.banner-side .banner-body {
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, 1),
+    0 0 10px rgba(255, 255, 255, 0.85);
+}
+
+/* Identical box for every side thumbnail; height scales with viewport so four rows fit */
+.side-thumb-box {
+  box-sizing: border-box;
+  width: clamp(4.75rem, 26vw, 7rem);
+  height: min(9.25rem, max(4.5rem, calc((100svh - 16rem) / 4)));
+}
