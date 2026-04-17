@@ -22,7 +22,9 @@ function SideThumb({ src }) {
       <img
         src={src}
         alt=""
-        className="block h-full w-full object-contain object-center"
+        className={`block h-full w-full object-contain object-center ${
+          src.includes("right-circle-1") ? "scale-125" : ""
+        }`}
         loading="lazy"
         decoding="async"
       />
