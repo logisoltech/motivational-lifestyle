@@ -15,14 +15,14 @@ function curveOffsetTowardCenterRem(i, maxRem) {
 const LEFT_CURVE_MAX_REM = 2.5;
 const RIGHT_CURVE_MAX_REM = 1.9;
 
-/* ✅ UPDATED SIZE HERE */
+/* ✅ Smaller + clean */
 function SideThumb({ src }) {
   return (
-    <div className="flex h-[95px] w-[95px] shrink-0 items-center justify-center overflow-hidden sm:h-[110px] sm:w-[110px] md:h-[125px] md:w-[125px]">
+    <div className="flex h-[78px] w-[140px] shrink-0 items-center justify-center sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]">
       <img
         src={src}
         alt=""
-        className="block h-full w-full object-cover object-center"
+        className="block h-full w-full object-contain object-center"
         loading="lazy"
         decoding="async"
       />
@@ -98,12 +98,12 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(22vh,9.5rem)] pb-10 sm:pt-[min(24vh,10rem)] sm:pb-12 md:px-2 md:pt-[min(26vh,11rem)] md:pb-14">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
           
-          <div className="flex flex-1 -translate-y-2 justify-between px-2 sm:-translate-y-3 sm:px-4 md:-translate-y-4 md:px-8">
+          <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
             {/* LEFT SIDE */}
-            <div className="flex w-[min(50vw,16rem)] flex-col items-start justify-between gap-y-3">
+            <div className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-start gap-y-2">
               {LEFT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
@@ -118,7 +118,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="flex w-[min(50vw,16rem)] flex-col items-end justify-between gap-y-3">
+            <div className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-end gap-y-2">
               {RIGHT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
@@ -148,7 +148,7 @@ export default function Home() {
                 One for all motivational lifestyle
               </h2>
               <p className="text-[10px] mt-3 max-w-md font-semibold uppercase">
-              THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
+                THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
               </p>
             </aside>
 
@@ -162,9 +162,9 @@ export default function Home() {
                 Self sufficient products
               </h2>
               <p className="text-[10px] mt-3 max-w-md font-semibold uppercase">
-              NO SHOPPING, CONSTRUCTING,STORAGE EQUALIZERS FUNCTION, TASTE, STYLE YOU DESIRE WHEN YOU NEED IT
+                NO SHOPPING, CONSTRUCTING, STORAGE EQUALIZERS FUNCTION, TASTE, STYLE YOU DESIRE WHEN YOU NEED IT
 
-FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL 4 YOU – NEXT STEP IN HUMAN EVOLUTION
+                FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP IN HUMAN EVOLUTION
               </p>
             </aside>
           </div>
