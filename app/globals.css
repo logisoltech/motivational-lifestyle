@@ -52,3 +52,7 @@ body {
   width: clamp(4.75rem, 26vw, 7rem);
   height: min(9.25rem, max(4.5rem, calc((100svh - 16rem) / 4)));
 }
+
+.img-background {
+  background-position: 10vh
+}

@@ -80,7 +80,7 @@ export default function Home() {
       
       {/* Background 2 */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-top bg-no-repeat"
         style={{ backgroundImage: "url('/2.jpeg')" }}
       />
 
@@ -100,12 +100,12 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
+        <div  className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
             {/* LEFT SIDE */}
-            <div className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-start gap-y-2">
+            <div data-aos="fade-right" className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-start gap-y-2">
               {LEFT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-end gap-y-2">
+            <div data-aos="fade-left" className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-end gap-y-2">
               {RIGHT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
@@ -155,7 +155,7 @@ export default function Home() {
             </aside>
 
             <div className="flex flex-col items-center">
-              <p className="text-xs tracking-[0.3em]">M.D. 111</p>
+              <p className="text-lg font-bold ">M.D. 111</p>
               <img src="/logo.png" className="max-w-[110px]" />
             </div>
 
