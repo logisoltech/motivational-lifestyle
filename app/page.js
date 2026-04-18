@@ -78,10 +78,13 @@ export default function Home() {
   return (
     <div className="relative h-[100dvh] max-h-[100dvh] w-full overflow-hidden">
       
-      {/* Background 2 */}
+      {/* Background 2 — position between top (0%) and center (50%) on the Y axis */}
       <div
-        className="absolute inset-0 bg-cover bg-top bg-no-repeat"
-        style={{ backgroundImage: "url('/2.jpeg')" }}
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: "url('/2.jpeg')",
+          backgroundPosition: "center 30%",
+        }}
       />
 
       {/* Background 1 */}
@@ -146,11 +149,11 @@ export default function Home() {
             data-aos="fade-down"
           >
             <aside className="text-left ml-12">
-              <h2 className="text-md font-bold uppercase">
+              <h2 className="text-xl font-bold uppercase">
                 One for all motivational lifestyle
               </h2>
-              <p className="text-[10px] mt-3 max-w-md font-semibold uppercase">
-                THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER<br/> <br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
+              <p className="text-[11px] mt-3 max-w-md font-semibold uppercase">
+                THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
               </p>
             </aside>
 
@@ -160,14 +163,13 @@ export default function Home() {
             </div>
 
             <aside className="text-left ml-12">
-              <h2 className="text-md font-bold uppercase">
-                Self sufficient products
+              <h2 className="text-xl font-bold uppercase">
+                Self sufficient Free & Easy AI Products
               </h2>
-              <p className="text-[10px] mt-3 max-w-md font-semibold uppercase">
+              <p className="text-[11px] mt-3 max-w-md font-semibold uppercase">
                 NO SHOPPING, CONSTRUCTING, STORAGE EQUALIZERS FUNCTION, TASTE, STYLE YOU DESIRE WHEN YOU NEED IT
                 <br/>
-                <br/>
-                FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP IN HUMAN EVOLUTION
+                <span className="mt-4">FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP IN HUMAN EVOLUTION</span>
               </p>
             </aside>
           </div>
