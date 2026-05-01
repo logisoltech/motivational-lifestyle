@@ -91,7 +91,7 @@ export default function Home() {
       <div
         className={`absolute inset-0 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
         style={{
-          backgroundImage: "url('/1.png')",
+          backgroundImage: "url('/banner-1.png')",
           opacity: transitioned ? 0 : 1,
         }}
       />
