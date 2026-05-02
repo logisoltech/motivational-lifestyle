@@ -7,6 +7,22 @@ import "aos/dist/aos.css";
 const LEFT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/left-circle-${n}.png`);
 const RIGHT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/right-circle-${n}.png`);
 
+/** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
+const LEFT_LINKS = [
+  "https://cityopia-motivational-lifestyle.vercel.app/",
+  "https://flyer-motivational-lifestyle.vercel.app/",
+  "https://thinker-motivational-lifestyle.vercel.app/",
+  "https://government-system-motivational-life.vercel.app/",
+];
+
+/** Order matches right-circle-1 … right-circle-4 (Printer → Energy → Material → Gravity motor). */
+const RIGHT_LINKS = [
+  "https://product-printer-motivational-lifest.vercel.app/",
+  "https://energy-motivational-lifestyle.vercel.app/",
+  "https://material-motivational-lifestyle.vercel.app/",
+  "https://gravity-motor-motivational-lifestyl.vercel.app/",
+];
+
 function curveOffsetTowardCenterRem(i, maxRem) {
   const t = Math.sin((Math.PI * i) / 3);
   return maxRem * (1 - t);
@@ -15,9 +31,8 @@ function curveOffsetTowardCenterRem(i, maxRem) {
 const LEFT_CURVE_MAX_REM = 2.5;
 const RIGHT_CURVE_MAX_REM = 1.9;
 
-/* ✅ Smaller + clean */
-function SideThumb({ src }) {
-  return (
+function SideThumb({ src, href }) {
+  const inner = (
     <div className="flex h-[78px] w-[140px] shrink-0 items-center justify-center sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]">
       <img
         src={src}
@@ -29,6 +44,19 @@ function SideThumb({ src }) {
         decoding="async"
       />
     </div>
+  );
+
+  if (!href) return inner;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="pointer-events-auto shrink-0 rounded-sm outline-offset-4 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-white"
+    >
+      {inner}
+    </a>
   );
 }
 
@@ -117,7 +145,7 @@ export default function Home() {
                     transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM)}rem)`,
                   }}
                 >
-                  <SideThumb src={src} />
+                  <SideThumb src={src} href={LEFT_LINKS[i]} />
                 </div>
               ))}
             </div>
@@ -132,7 +160,7 @@ export default function Home() {
                     transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM)}rem)`,
                   }}
                 >
-                  <SideThumb src={src} />
+                  <SideThumb src={src} href={RIGHT_LINKS[i]} />
                 </div>
               ))}
             </div>
