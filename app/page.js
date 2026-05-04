@@ -186,7 +186,8 @@ export default function Home() {
             </aside>
 
             <div className="flex flex-col items-center">
-              <p className="text-lg font-bold ">M.D. 111</p>
+              {/* <p className="text-lg font-bold ">M.D. 111</p> */}
+              <img src="/md-1.png" className="max-w-[65px] mb-4" />
               <img src="/logo.png" className="max-w-[110px]" />
             </div>
 
