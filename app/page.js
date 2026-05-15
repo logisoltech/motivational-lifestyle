@@ -49,7 +49,7 @@ const RIGHT_CURVE_MAX_REM = 1.9;
 
 function SideThumb({ src, href, compact, caption }) {
   const sizeClasses = compact
-    ? "h-[62px] w-[108px] sm:h-[68px] sm:w-[118px] md:h-[76px] md:w-[128px]"
+    ? "h-[70px] w-[118px] sm:h-[76px] sm:w-[128px] md:h-[84px] md:w-[140px]"
     : "h-[78px] w-[140px] sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]";
 
   const scaleClass =
@@ -162,7 +162,7 @@ export default function Home() {
       <div
         className={`absolute inset-0 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
         style={{
-          backgroundImage: "url('/starter-bg.png')",
+          backgroundImage: "url('/1.png')",
           opacity: transitioned ? 0 : 1,
         }}
       />
@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div  className="pointer-events-none mt-2 absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
+        <div  className="pointer-events-none mt-2 absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(17vh,6rem)] pb-10 sm:pt-[min(19vh,7rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,7.5rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
@@ -239,14 +239,14 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 One for all motivational lifestyle
               </h2>
-              <p className="text-[13px] mt-3 max-w-xl font-semibold uppercase">
+              <p className="text-[13px] mt-1 max-w-xl font-semibold uppercase">
                 THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
               </p>
             </aside>
 
             <div className="flex flex-col items-center">
               {/* <p className="text-lg font-bold ">M.D. 111</p> */}
-              <img src="/md-1.png" className="max-w-[65px] mb-4" />
+              <img src="/md-1.png" className="max-w-[80px] mb-2" />
               <img src="/logo.png" className="max-w-[110px]" />
             </div>
 
@@ -254,7 +254,7 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 Self sufficient Free & Easy AI Products
               </h2>
-              <p className="text-[13px] mt-3 max-w-md font-semibold uppercase">
+              <p className="text-[13px] mt-1 max-w-md font-semibold uppercase">
               INVEST IN SELF-SUFFICIENCY AND THE FUTURE (PROFIT WHILE FUNDING FOR THE FINAL LIFESTYLE &, PRODUCTS (& RESEARCH) FOR HUMANITY)
                 <br/>
               </p>
