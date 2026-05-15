@@ -196,9 +196,8 @@ export default function Home() {
                 Self sufficient Free & Easy AI Products
               </h2>
               <p className="text-[11px] mt-3 max-w-md font-semibold uppercase">
-                NO SHOPPING, CONSTRUCTING, STORAGE EQUALIZERS FUNCTION, TASTE, STYLE YOU DESIRE WHEN YOU NEED IT
+              INVEST IN SELF-SUFFICIENCY AND THE FUTURE (PROFIT WHILE FUNDING FOR THE FINAL LIFESTYLE &, PRODUCTS (& RESEARCH) FOR HUMANITY)
                 <br/>
-                <span className="mt-4">FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP IN HUMAN EVOLUTION</span>
               </p>
             </aside>
           </div>
