@@ -1,4 +1,5 @@
 import { Advent_Pro } from "next/font/google";
+import { textFont } from "./Font/font.js";
 import "./globals.css";
 
 const adventPro = Advent_Pro({
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${adventPro.variable} h-full antialiased`}
+      className={`${adventPro.variable} ${textFont.variable} h-full antialiased`}
     >
       <body className="h-full overflow-hidden font-sans">{children}</body>
     </html>

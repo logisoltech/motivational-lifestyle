@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { textFont } from "./Font/font";
 
 const LEFT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/left-circle-${n}.png`);
 const RIGHT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/right-circle-${n}.png`);
@@ -23,6 +24,21 @@ const RIGHT_LINKS = [
   "https://gravity-motor-motivational-lifestyl.vercel.app/",
 ];
 
+const RIGHT_LABELS = [
+  "1 FOR ALL 3D PRODUCTS PRINTER/RECYCLER EQUALIZER",
+  "1 DRINK-FOOD-DIET-ENERGY",
+  "1 MATERIAL FOR ALL PRODUCTS (NON-EDIBLE)",
+  "1 ENERGY GRAVITY MOTOR",
+];
+
+/** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
+const LEFT_LABELS = [
+  "CITYOPIA- 1 FOR ALL FUTURE CITY",
+  "1 FLYER IFFO PARK GO/LIVE/PLAY ANYWHERE",
+  "1 THINKER/IMMUNIZER - FOR ALL INFO & HEALTH",
+  "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
+];
+
 function curveOffsetTowardCenterRem(i, maxRem) {
   const t = Math.sin((Math.PI * i) / 3);
   return maxRem * (1 - t);
@@ -31,22 +47,49 @@ function curveOffsetTowardCenterRem(i, maxRem) {
 const LEFT_CURVE_MAX_REM = 2.5;
 const RIGHT_CURVE_MAX_REM = 1.9;
 
-function SideThumb({ src, href }) {
-  const inner = (
-    <div className="flex h-[78px] w-[140px] shrink-0 items-center justify-center sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]">
+function SideThumb({ src, href, compact, caption }) {
+  const sizeClasses = compact
+    ? "h-[62px] w-[108px] sm:h-[68px] sm:w-[118px] md:h-[76px] md:w-[128px]"
+    : "h-[78px] w-[140px] sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]";
+
+  const scaleClass =
+    src.includes("right-circle-1") && compact
+      ? "scale-110"
+      : src.includes("right-circle-1")
+        ? "scale-125"
+        : "";
+
+  const imageBlock = (
+    <div
+      className={`flex ${sizeClasses} shrink-0 items-center justify-center`}
+    >
       <img
         src={src}
         alt=""
-        className={`block h-full w-full object-contain object-center ${
-          src.includes("right-circle-1") ? "scale-125" : ""
-        }`}
+        className={`block h-full w-full object-contain object-center ${scaleClass}`}
         loading="lazy"
         decoding="async"
       />
     </div>
   );
 
-  if (!href) return inner;
+  const glassLabel =
+    caption != null && caption !== "" ? (
+      <p
+        className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-2 py-2 text-center text-[10px] font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-[11px] md:text-xs`}
+      >
+        {caption}
+      </p>
+    ) : null;
+
+  const column = (
+    <div className="flex shrink-0 flex-col items-center gap-0">
+      {imageBlock}
+      {glassLabel}
+    </div>
+  );
+
+  if (!href) return column;
 
   return (
     <a
@@ -55,7 +98,7 @@ function SideThumb({ src, href }) {
       rel="noopener noreferrer"
       className="pointer-events-auto shrink-0 rounded-sm outline-offset-4 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-white"
     >
-      {inner}
+      {column}
     </a>
   );
 }
@@ -131,36 +174,52 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div  className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
+        <div  className="pointer-events-none mt-2 absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(20vh,7rem)] pb-10 sm:pt-[min(22vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(25vh,9rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
-            {/* LEFT SIDE */}
-            <div data-aos="fade-right" className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-start gap-y-2">
+            {/* LEFT SIDE — caption under circle, same rail + curve as right */}
+            <div
+              data-aos="fade-right"
+              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-3"
+            >
               {LEFT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
-                  className="flex shrink-0 justify-start"
+                  className="flex w-full shrink-0 flex-col items-center"
                   style={{
                     transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM)}rem)`,
                   }}
                 >
-                  <SideThumb src={src} href={LEFT_LINKS[i]} />
+                  <SideThumb
+                    src={src}
+                    href={LEFT_LINKS[i]}
+                    compact
+                    caption={LEFT_LABELS[i]}
+                  />
                 </div>
               ))}
             </div>
 
-            {/* RIGHT SIDE */}
-            <div data-aos="fade-left" className="-mt-0 flex w-[min(50vw,16rem)] flex-col items-end gap-y-2">
+            {/* RIGHT SIDE — full-width rows + centered stacks so icons track the curve evenly */}
+            <div
+              data-aos="fade-left"
+              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-3"
+            >
               {RIGHT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={src}
-                  className="flex shrink-0 justify-end"
+                  className="flex w-full shrink-0 flex-col items-center"
                   style={{
                     transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM)}rem)`,
                   }}
                 >
-                  <SideThumb src={src} href={RIGHT_LINKS[i]} />
+                  <SideThumb
+                    src={src}
+                    href={RIGHT_LINKS[i]}
+                    compact
+                    caption={RIGHT_LABELS[i]}
+                  />
                 </div>
               ))}
             </div>
@@ -171,7 +230,7 @@ export default function Home() {
 
       {/* Top Branding */}
       {transitioned && (
-        <div className="absolute top-0 left-0 right-0 z-20 px-3 pt-4 pb-6 sm:px-5 sm:pt-6 md:pt-8">
+        <div className="absolute top-0 left-0 right-0 z-20 px-3 pt-4 pb-6 sm:px-5">
           <div
             className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8"
             data-aos="fade-down"
@@ -180,7 +239,7 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 One for all motivational lifestyle
               </h2>
-              <p className="text-[11px] mt-3 max-w-md font-semibold uppercase">
+              <p className="text-[13px] mt-3 max-w-xl font-semibold uppercase">
                 THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
               </p>
             </aside>
@@ -195,7 +254,7 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 Self sufficient Free & Easy AI Products
               </h2>
-              <p className="text-[11px] mt-3 max-w-md font-semibold uppercase">
+              <p className="text-[13px] mt-3 max-w-md font-semibold uppercase">
               INVEST IN SELF-SUFFICIENCY AND THE FUTURE (PROFIT WHILE FUNDING FOR THE FINAL LIFESTYLE &, PRODUCTS (& RESEARCH) FOR HUMANITY)
                 <br/>
               </p>

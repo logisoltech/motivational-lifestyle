@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-advent-pro), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-advent-pro), ui-monospace, monospace;
+  /* Circle caption pills only — see `font-glass` in page.js */
+  --font-glass: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
