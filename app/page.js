@@ -246,7 +246,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center text-center">
               <p className="mb-2 max-w-[14rem] px-1 text-sm font-bold uppercase leading-snug tracking-wide text-black sm:max-w-[16rem] sm:text-base md:mb-3 md:max-w-[18rem] md:text-lg">
-                INVEST IN SELF-SUFFICIENCY & THE FUTURE FOR RESEARCH & HUMANITY
+                INVEST IN SELF-SUFFICIENCY & THE FUTURE FOR RESEARCH & HUMANITY. PROFIT WHILE FUNDING THE FINAL LIFESTYLE & PRODUCTS.
               </p>
               {/* <p className="text-lg font-bold ">M.D. 111</p> */}
               <img src="/md-1.png" className="mb-2 max-w-[80px]" alt="" />
