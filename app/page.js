@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div  className="pointer-events-none mt-2 absolute inset-x-0 bottom-0 top-0 z-[15] flex flex-col pt-[min(17vh,6rem)] pb-10 sm:pt-[min(19vh,7rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,7.5rem)] md:pb-14">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(17vh,6rem)] pb-10 sm:pt-[min(19vh,7rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,7.5rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
@@ -230,7 +230,7 @@ export default function Home() {
 
       {/* Top Branding */}
       {transitioned && (
-        <div className="absolute top-0 left-0 right-0 z-20 px-3 pt-4 pb-6 sm:px-5">
+        <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 select-none px-3 pt-4 pb-6 sm:px-5">
           <div
             className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8"
             data-aos="fade-down"
