@@ -244,20 +244,19 @@ export default function Home() {
               </p>
             </aside>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-center">
+              <p className="mb-2 max-w-[14rem] px-1 text-sm font-bold uppercase leading-snug tracking-wide text-black sm:max-w-[16rem] sm:text-base md:mb-3 md:max-w-[18rem] md:text-lg">
+                INVEST IN SELF-SUFFICIENCY & THE FUTURE FOR RESEARCH & HUMANITY
+              </p>
               {/* <p className="text-lg font-bold ">M.D. 111</p> */}
-              <img src="/md-1.png" className="max-w-[80px] mb-2" />
-              <img src="/logo.png" className="max-w-[110px]" />
+              <img src="/md-1.png" className="mb-2 max-w-[80px]" alt="" />
+              <img src="/logo.png" className="max-w-[110px]" alt="" />
             </div>
 
-            <aside className="text-left ml-12">
+            <aside className="ml-12 text-left">
               <h2 className="text-xl font-bold uppercase">
                 Self sufficient Free & Easy AI Products
               </h2>
-              <p className="text-[13px] mt-1 max-w-md font-semibold uppercase">
-              INVEST IN SELF-SUFFICIENCY AND THE FUTURE (PROFIT WHILE FUNDING FOR THE FINAL LIFESTYLE &, PRODUCTS (& RESEARCH) FOR HUMANITY)
-                <br/>
-              </p>
             </aside>
           </div>
         </div>
