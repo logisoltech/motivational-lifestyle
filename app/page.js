@@ -257,6 +257,13 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 Self sufficient Free & Easy AI Products
               </h2>
+              <p className="text-[13px] mt-1 max-w-md font-semibold uppercase">
+                NO SHOPPING, CONSTRUCTING, STORAGE EQUALIZERS FUNCTION, TASTE,
+                STYLE YOU DESIRE WHEN YOU NEED IT -
+               
+                FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP
+                IN HUMAN EVOLUTION
+              </p>
             </aside>
           </div>
         </div>
