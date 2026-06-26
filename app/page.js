@@ -239,8 +239,8 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 One for all motivational lifestyle
               </h2>
-              <p className="text-[13px] mt-1 max-w-xl font-semibold uppercase">
-                THE FINAL PRODUCTS-COOKING WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGERSELF-SUFFICIENCY AND FREEDOM FOR EVERYONE.
+              <p className="mt-1 max-w-xl text-[13px] font-semibold uppercase leading-snug">
+                THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
               </p>
             </aside>
 
@@ -259,12 +259,13 @@ export default function Home() {
               <h2 className="text-xl font-bold uppercase">
                 Self sufficient Free & Easy AI Products
               </h2>
-              <p className="text-[13px] mt-1 max-w-md font-semibold uppercase">
-                NO SHOPPING, CONSTRUCTING, STORAGE EQUALIZERS FUNCTION, TASTE,
-                STYLE YOU DESIRE WHEN YOU NEED IT -
-               
-                FINALLY THE ULTIMATE EQUALIZER. WE DO IT ALL FOR YOU – NEXT STEP
-                IN HUMAN EVOLUTION
+              <p className="mt-1 max-w-xl text-[13px] font-semibold uppercase leading-snug">
+                NO SHOPPING, CONSTRUCTING, STORAGE
+                <br />
+                EQUALIZERS CREATE ANY STYLE, TASTE OR FUNCTION YOU DESIRE WHEN
+                YOU NEED IT
+                <br />
+                WE DO IT ALL FOR YOU
               </p>
             </aside>
           </div>

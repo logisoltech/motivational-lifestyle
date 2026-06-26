@@ -41,6 +41,16 @@ body {
   animation: slow-zoom 2.5s ease-in-out forwards;
 }
 
+.big-period {
+  display: inline-block;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin: 0 0.12em 0 0.05em;
+  border-radius: 50%;
+  background-color: currentColor;
+  vertical-align: 0.14em;
+  transform: translateY(2px);
+}
 .banner-side .banner-heading,
 .banner-side .banner-body {
   text-shadow:
