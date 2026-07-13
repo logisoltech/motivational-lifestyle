@@ -49,7 +49,7 @@ const RIGHT_CURVE_MAX_REM = 1.9;
 
 function SideThumb({ src, href, compact, caption }) {
   const sizeClasses = compact
-    ? "h-[70px] w-[118px] sm:h-[76px] sm:w-[128px] md:h-[84px] md:w-[140px]"
+    ? "h-[74px] w-[124px] sm:h-[80px] sm:w-[134px] md:h-[88px] md:w-[146px]"
     : "h-[78px] w-[140px] sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]";
 
   const scaleClass =
@@ -240,7 +240,7 @@ export default function Home() {
                 One for all motivational lifestyle
               </h2>
               <p className="mt-1 max-w-xl text-[13px] font-semibold uppercase leading-snug">
-                THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
+                THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
               </p>
             </aside>
 
@@ -261,11 +261,10 @@ export default function Home() {
               </h2>
               <p className="mt-1 max-w-xl text-[13px] font-semibold uppercase leading-snug">
                 NO SHOPPING, CONSTRUCTING, STORAGE
+                <span className="big-period" aria-hidden="true" />
                 <br />
                 EQUALIZERS CREATE ANY STYLE, TASTE OR FUNCTION YOU DESIRE WHEN
-                YOU NEED IT
-                <br />
-                WE DO IT ALL FOR YOU
+                YOU NEED IT WE DO IT ALL FOR YOU
               </p>
             </aside>
           </div>
