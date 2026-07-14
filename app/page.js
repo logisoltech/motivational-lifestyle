@@ -35,7 +35,7 @@ const RIGHT_LABELS = [
 const LEFT_LABELS = [
   "CITYOPIA- 1 FOR ALL FUTURE CITY",
   "1 FLYER IFFO PARK GO/LIVE/PLAY ANYWHERE",
-  "1 THINKER/IMMUNIZER - FOR ALL INFO & HEALTH",
+  "1 HALO/THINKER/IMMUNIZER/PROTECTION - FOR ALL INFO & HEALTH",
   "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
 ];
 
@@ -47,9 +47,9 @@ function curveOffsetTowardCenterRem(i, maxRem) {
 const LEFT_CURVE_MAX_REM = 2.5;
 const RIGHT_CURVE_MAX_REM = 1.9;
 
-function SideThumb({ src, href, compact, caption }) {
+function SideThumb({ src, href, compact, caption, captionShiftRem = 0 }) {
   const sizeClasses = compact
-    ? "h-[74px] w-[124px] sm:h-[80px] sm:w-[134px] md:h-[88px] md:w-[146px]"
+    ? "h-[80px] w-[134px] sm:h-[88px] sm:w-[148px] md:h-[98px] md:w-[164px]"
     : "h-[78px] w-[140px] sm:h-[90px] sm:w-[165px] md:h-[105px] md:w-[195px]";
 
   const scaleClass =
@@ -76,7 +76,8 @@ function SideThumb({ src, href, compact, caption }) {
   const glassLabel =
     caption != null && caption !== "" ? (
       <p
-        className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-2 py-2 text-center text-[10px] font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-[11px] md:text-xs`}
+        className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-2 py-2 text-center text-[11px] font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-[12px] md:text-[13px]`}
+        style={captionShiftRem ? { transform: `translateX(${captionShiftRem}rem)` } : undefined}
       >
         {caption}
       </p>
@@ -147,34 +148,37 @@ export default function Home() {
   }, [transitioned]);
 
   return (
-    <div className="relative h-[100dvh] max-h-[100dvh] w-full overflow-hidden">
+    <div className="relative w-full overflow-x-hidden">
       
-      {/* Background 2 — position between top (0%) and center (50%) on the Y axis */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('/2.jpeg')",
-          backgroundPosition: "center 30%",
-        }}
+      {/* Background 2 — full image in normal flow so nothing is cropped */}
+      <img
+        src="/2.jpeg"
+        alt=""
+        className="block w-full h-auto select-none"
+        draggable={false}
       />
 
-      {/* Background 1 */}
-      <div
-        className={`absolute inset-0 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
-        style={{
-          backgroundImage: "url('/1.png')",
-          opacity: transitioned ? 0 : 1,
-        }}
-      />
+      {/* Background 1 — intro overlay, pinned to viewport during the opening */}
+      {!transitioned && (
+        <div
+          className={`fixed inset-0 z-30 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
+          style={{
+            backgroundImage: "url('/1.png')",
+            opacity: transitioned ? 0 : 1,
+          }}
+        />
+      )}
 
-      {/* Logo */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-        <OpeningLogo zoomStarted={zoomStarted} />
-      </div>
+      {/* Logo — pinned to viewport during the opening */}
+      {!transitioned && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none">
+          <OpeningLogo zoomStarted={zoomStarted} />
+        </div>
+      )}
 
       {/* Side Circles */}
       {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(17vh,6rem)] pb-10 sm:pt-[min(19vh,7rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,7.5rem)] md:pb-14">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(23vh,9.5rem)] pb-10 sm:pt-[min(25vh,10.5rem)] sm:pb-12 md:px-2 md:pt-[min(27vh,11.5rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
@@ -196,6 +200,7 @@ export default function Home() {
                     href={LEFT_LINKS[i]}
                     compact
                     caption={LEFT_LABELS[i]}
+                    captionShiftRem={i === 2 ? 3 : 0}
                   />
                 </div>
               ))}
@@ -263,11 +268,29 @@ export default function Home() {
                 NO SHOPPING, CONSTRUCTING, STORAGE
                 <span className="big-period" aria-hidden="true" />
                 <br />
-                EQUALIZERS CREATE ANY STYLE, TASTE OR FUNCTION YOU DESIRE WHEN
+                EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
                 YOU NEED IT WE DO IT ALL FOR YOU
               </p>
             </aside>
           </div>
+        </div>
+      )}
+
+      {/* Action buttons — pinned to the bottom of the viewport */}
+      {transitioned && (
+        <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-3 sm:bottom-6">
+          <a
+            href="#"
+            className="w-56 rounded-full bg-[#E8C24A] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
+          >
+            Invest / Donate
+          </a>
+          <a
+            href="#"
+            className="w-56 rounded-full border-2 border-[#E8C24A] bg-black/60 px-8 py-3 text-center text-base font-bold text-[#E8C24A] shadow-[0_6px_20px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-transform hover:scale-[1.03]"
+          >
+            Buy M.D Crypto
+          </a>
         </div>
       )}
     </div>
