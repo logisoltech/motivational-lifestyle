@@ -178,7 +178,7 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(23vh,9.5rem)] pb-10 sm:pt-[min(25vh,10.5rem)] sm:pb-12 md:px-2 md:pt-[min(27vh,11.5rem)] md:pb-14">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(17vh,7rem)] pb-10 sm:pt-[min(19vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,9rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
@@ -281,13 +281,13 @@ export default function Home() {
         <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-3 sm:bottom-6">
           <a
             href="#"
-            className="w-56 rounded-full bg-[#E8C24A] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
+            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
           >
             Invest / Donate
           </a>
           <a
             href="#"
-            className="w-56 rounded-full border-2 border-[#E8C24A] bg-black/60 px-8 py-3 text-center text-base font-bold text-[#E8C24A] shadow-[0_6px_20px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-transform hover:scale-[1.03]"
+            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
           >
             Buy M.D Crypto
           </a>
