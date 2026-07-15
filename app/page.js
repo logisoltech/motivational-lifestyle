@@ -178,7 +178,7 @@ export default function Home() {
 
       {/* Side Circles */}
       {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(17vh,7rem)] pb-10 sm:pt-[min(19vh,8rem)] sm:pb-12 md:px-2 md:pt-[min(21vh,9rem)] md:pb-14">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(14vh,5rem)] pb-10 sm:pt-[min(16vh,6rem)] sm:pb-12 md:px-2 md:pt-[min(18vh,7rem)] md:pb-14">
           
           <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
 
@@ -269,7 +269,8 @@ export default function Home() {
                 <span className="big-period" aria-hidden="true" />
                 <br />
                 EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
-                YOU NEED IT WE DO IT ALL FOR YOU
+                YOU NEED IT<span className="big-period" aria-hidden="true" /> WE
+                DO IT ALL FOR YOU
               </p>
             </aside>
           </div>
