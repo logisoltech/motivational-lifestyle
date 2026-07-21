@@ -251,10 +251,20 @@ export default function Home() {
 
             <div className="flex flex-col items-center text-center">
               <img
-                src="/invest.png"
-                alt="Invest in self-sufficiency and the future for research and humanity"
-                className="mb-2 max-w-[14rem] sm:max-w-[16rem] md:mb-3 md:max-w-[18rem]"
+                src="/invest-.png"
+                alt="Invest in self-sufficiency"
+                className="mb-1 max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem]"
               />
+              <p className="mb-2 max-w-[18rem] text-base font-bold uppercase leading-snug tracking-wide text-black sm:max-w-[20rem] sm:text-lg md:mb-3 md:max-w-[22rem] md:text-xl">
+                & THE FUTURE FOR RESEARCH &
+                <br />
+                HUMANITY
+                <span className="big-period" aria-hidden="true" /> PROFIT WHILE
+                FUNDING
+                <br />
+                THE FINAL LIFESTYLE & PRODUCTS
+                <span className="big-period" aria-hidden="true" />
+              </p>
               {/* <p className="text-lg font-bold ">M.D. 111</p> */}
               <img src="/md-1.png" className="mb-2 max-w-[80px]" alt="" />
               <img src="/logo.png" className="max-w-[110px]" alt="" />
