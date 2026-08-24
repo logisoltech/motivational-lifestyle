@@ -241,8 +241,8 @@ export default function Home() {
             data-aos="fade-down"
           >
             <aside className="text-left">
-              <h2 className="text-xl font-bold uppercase">
-                One for all motivational lifestyle
+              <h2 className="text-lg font-bold uppercase">
+                1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
               </h2>
               <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
                 THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
@@ -292,13 +292,13 @@ export default function Home() {
         <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-3 sm:bottom-6">
           <a
             href="#"
-            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
+            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-lg font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
           >
             Invest / Donate
           </a>
           <a
             href="#"
-            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-base font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
+            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-lg font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
           >
             Buy M.D Crypto
           </a>
