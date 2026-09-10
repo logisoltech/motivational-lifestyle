@@ -292,7 +292,7 @@ export default function Home() {
         <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-3 sm:bottom-6">
           <a
             href="#"
-            className="w-56 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 py-3 text-center text-lg font-bold text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03]"
+            className="flex h-[3.25rem] w-56 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 text-center text-xl font-bold leading-none text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:text-2xl"
           >
             Invest / Donate
           </a>
