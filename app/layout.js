@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${adventPro.variable} ${textFont.variable} h-full antialiased`}
+      className={`${adventPro.variable} ${textFont.variable} antialiased`}
     >
-      <body className="overflow-x-hidden font-sans">{children}</body>
+      <body className="min-h-dvh overflow-x-hidden font-sans">{children}</body>
     </html>
   );
 }

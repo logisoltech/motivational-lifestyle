@@ -8,6 +8,9 @@ import { textFont } from "./Font/font";
 const LEFT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/left-circle-${n}.png`);
 const RIGHT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/right-circle-${n}.png`);
 
+const LEFT_EXTRA_SRC = ["/circle-placeholder.svg", "/circle-placeholder.svg"];
+const RIGHT_EXTRA_SRC = ["/circle-placeholder.svg", "/circle-placeholder.svg"];
+
 /** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
 const LEFT_LINKS = [
   "https://cityopia-motivational-lifestyle.vercel.app/",
@@ -15,6 +18,8 @@ const LEFT_LINKS = [
   "https://thinker-motivational-lifestyle.vercel.app/",
   "https://government-system-motivational-life.vercel.app/",
 ];
+
+const LEFT_EXTRA_LINKS = [null, null];
 
 /** Order matches right-circle-1 … right-circle-4 (Printer → Energy → Material → Gravity motor). */
 const RIGHT_LINKS = [
@@ -24,12 +29,16 @@ const RIGHT_LINKS = [
   "https://gravity-motor-motivational-lifestyl.vercel.app/",
 ];
 
+const RIGHT_EXTRA_LINKS = [null, null];
+
 const RIGHT_LABELS = [
   "1 FOR ALL 3D PRODUCTS PRINTER/RECYCLER EQUALIZER",
   "1 DRINK-FOOD-DIET-ENERGY",
   "1 MATERIAL FOR ALL PRODUCTS (NON-EDIBLE)",
   "1 ENERGY GRAVITY MOTOR",
 ];
+
+const RIGHT_EXTRA_LABELS = ["MINI MRI-XRAY", "SPEEDY BIRTH"];
 
 /** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
 const LEFT_LABELS = [
@@ -39,8 +48,10 @@ const LEFT_LABELS = [
   "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
 ];
 
-function curveOffsetTowardCenterRem(i, maxRem) {
-  const t = Math.sin((Math.PI * i) / 3);
+const LEFT_EXTRA_LABELS = ["GRAVITY BELT", "EARTH MOTOR"];
+
+function curveOffsetTowardCenterRem(i, maxRem, lastIndex = 3) {
+  const t = Math.sin((Math.PI * i) / lastIndex);
   return maxRem * (1 - t);
 }
 
@@ -149,16 +160,13 @@ export default function Home() {
   }, [transitioned]);
 
   return (
-    <div className="relative w-full overflow-x-hidden">
-      
-      {/* Background 2 — full image in normal flow so nothing is cropped */}
-      <img
-        src="/2.jpeg"
-        alt=""
-        className="block w-full h-auto select-none"
-        draggable={false}
-      />
-
+    <div
+      className="relative w-full overflow-x-hidden bg-cover bg-top bg-no-repeat"
+      style={{
+        backgroundImage: "url('/2.jpeg')",
+        minHeight: "100dvh",
+      }}
+    >
       {/* Background 1 — intro overlay, pinned to viewport during the opening */}
       {!transitioned && (
         <div
@@ -172,28 +180,31 @@ export default function Home() {
 
       {/* Logo — pinned to viewport during the opening */}
       {!transitioned && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none">
+        <div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center">
           <OpeningLogo zoomStarted={zoomStarted} />
         </div>
       )}
 
-      {/* Side Circles */}
-      {transitioned && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[15] mt-2 flex flex-col pt-[min(14vh,5rem)] pb-10 sm:pt-[min(16vh,6rem)] sm:pb-12 md:px-2 md:pt-[min(18vh,7rem)] md:pb-14">
-          
-          <div className="flex flex-1 justify-between px-2 sm:px-4 md:px-8">
+      {/* Keep page at least one viewport tall during intro before circles mount */}
+      {!transitioned && <div className="min-h-[100dvh]" aria-hidden />}
 
-            {/* LEFT SIDE — caption under circle, same rail + curve as right */}
+      {/* Side Circles — original 4 in the main curve, extras only at the bottom */}
+      {transitioned && (
+        <div className="pointer-events-none relative z-[15] mt-2 flex flex-col pt-[min(14vh,5rem)] pb-16 sm:pt-[min(16vh,6rem)] sm:pb-20 md:px-2 md:pt-[min(18vh,7rem)] md:pb-24">
+          
+          <div className="flex justify-between px-2 sm:px-4 md:px-8">
+
+            {/* LEFT SIDE */}
             <div
               data-aos="fade-right"
-              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-3"
+              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2"
             >
               {LEFT_CIRCLE_SRC.map((src, i) => (
                 <div
-                  key={src}
+                  key={`left-${i}`}
                   className="flex w-full shrink-0 flex-col items-center"
                   style={{
-                    transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM)}rem)`,
+                    transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM, 3)}rem)`,
                   }}
                 >
                   <SideThumb
@@ -205,19 +216,35 @@ export default function Home() {
                   />
                 </div>
               ))}
+              {LEFT_EXTRA_SRC.map((src, i) => (
+                <div
+                  key={`left-extra-${i}`}
+                  className="flex w-full shrink-0 flex-col items-center"
+                  style={{
+                    transform: `translateX(${curveOffsetTowardCenterRem(i + 4, LEFT_CURVE_MAX_REM, 5)}rem)`,
+                  }}
+                >
+                  <SideThumb
+                    src={src}
+                    href={LEFT_EXTRA_LINKS[i]}
+                    compact
+                    caption={LEFT_EXTRA_LABELS[i]}
+                  />
+                </div>
+              ))}
             </div>
 
-            {/* RIGHT SIDE — full-width rows + centered stacks so icons track the curve evenly */}
+            {/* RIGHT SIDE */}
             <div
               data-aos="fade-left"
-              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-3"
+              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2"
             >
               {RIGHT_CIRCLE_SRC.map((src, i) => (
                 <div
-                  key={src}
+                  key={`right-${i}`}
                   className="flex w-full shrink-0 flex-col items-center"
                   style={{
-                    transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM)}rem)`,
+                    transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM, 3)}rem)`,
                   }}
                 >
                   <SideThumb
@@ -225,6 +252,22 @@ export default function Home() {
                     href={RIGHT_LINKS[i]}
                     compact
                     caption={RIGHT_LABELS[i]}
+                  />
+                </div>
+              ))}
+              {RIGHT_EXTRA_SRC.map((src, i) => (
+                <div
+                  key={`right-extra-${i}`}
+                  className="flex w-full shrink-0 flex-col items-center"
+                  style={{
+                    transform: `translateX(${-curveOffsetTowardCenterRem(i + 4, RIGHT_CURVE_MAX_REM, 5)}rem)`,
+                  }}
+                >
+                  <SideThumb
+                    src={src}
+                    href={RIGHT_EXTRA_LINKS[i]}
+                    compact
+                    caption={RIGHT_EXTRA_LABELS[i]}
                   />
                 </div>
               ))}
