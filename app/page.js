@@ -267,7 +267,21 @@ export default function Home() {
               </p>
               {/* <p className="text-lg font-bold ">M.D. 111</p> */}
               <img src="/md-1.png" className="mb-2 max-w-[80px]" alt="" />
-              <img src="/logo.png" className="max-w-[110px]" alt="" />
+              <div className="relative flex items-center justify-center">
+                <a
+                  href="#"
+                  className="pointer-events-auto absolute right-full mr-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-sm font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:mr-3 sm:h-10 sm:w-40 sm:text-base"
+                >
+                  Invest / Donate
+                </a>
+                <img src="/logo.png" className="max-w-[110px] shrink-0" alt="" />
+                <a
+                  href="#"
+                  className="pointer-events-auto absolute left-full ml-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-sm font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:ml-3 sm:h-10 sm:w-40 sm:text-base"
+                >
+                  Buy M.D Crypto
+                </a>
+              </div>
             </div>
 
             <aside className="text-left">
@@ -284,24 +298,6 @@ export default function Home() {
               </p>
             </aside>
           </div>
-        </div>
-      )}
-
-      {/* Action buttons — pinned to the bottom of the viewport */}
-      {transitioned && (
-        <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-col items-center gap-3 sm:bottom-6">
-          <a
-            href="#"
-            className="flex h-[3.25rem] w-56 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 text-center text-xl font-bold leading-none text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:text-2xl"
-          >
-            Invest / Donate
-          </a>
-          <a
-            href="#"
-            className="flex h-[3.25rem] w-56 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-8 text-center text-xl font-bold leading-none text-black shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:text-2xl"
-          >
-            Buy M.D Crypto
-          </a>
         </div>
       )}
     </div>
