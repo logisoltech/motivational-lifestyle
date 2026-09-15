@@ -107,6 +107,7 @@ function SideThumb({ src, href, compact, caption, captionShiftRem = 0 }) {
 export default function Home() {
   const [zoomStarted, setZoomStarted] = useState(false);
   const [transitioned, setTransitioned] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -269,14 +270,14 @@ export default function Home() {
               <div className="relative mb-2 flex items-center justify-center">
                 <a
                   href="#"
-                  className="pointer-events-auto absolute right-full mr-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-sm font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:mr-3 sm:h-10 sm:w-40 sm:text-base"
+                  className="pointer-events-auto absolute right-full mr-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:mr-3 sm:h-10 sm:w-40 sm:text-lg"
                 >
                   Invest / Donate
                 </a>
                 <img src="/md-1.png" className="max-w-[80px] shrink-0" alt="M.D. 1.1.1" />
                 <a
                   href="#"
-                  className="pointer-events-auto absolute left-full ml-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-sm font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:ml-3 sm:h-10 sm:w-40 sm:text-base"
+                  className="pointer-events-auto absolute left-full ml-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:ml-3 sm:h-10 sm:w-40 sm:text-lg"
                 >
                   Buy M.D Crypto
                 </a>
@@ -285,9 +286,28 @@ export default function Home() {
             </div>
 
             <aside className="text-left">
-              <h2 className="text-xl font-bold uppercase">
-                Self sufficient Free & Easy AI Products
-              </h2>
+              <div className="flex items-start justify-between gap-3">
+                <h2 className="text-xl font-bold uppercase">
+                  Self sufficient Free & Easy AI Products
+                </h2>
+                <button
+                  type="button"
+                  aria-label="Contact address"
+                  onClick={() => setContactOpen(true)}
+                  className="pointer-events-auto mt-0.5 shrink-0 rounded-full p-1.5 text-[#B8860B] transition-transform hover:scale-110 hover:text-[#9A7209]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-7 w-7"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" />
+                    <path d="M7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z" />
+                  </svg>
+                </button>
+              </div>
               <p className="mt-1 max-w-xl text-[14px] font-semibold uppercase leading-snug">
                 NO SHOPPING, CONSTRUCTING, STORAGE
                 <span className="big-period" aria-hidden="true" />
@@ -297,6 +317,39 @@ export default function Home() {
                 DO IT ALL FOR YOU
               </p>
             </aside>
+          </div>
+        </div>
+      )}
+
+      {contactOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+          onClick={() => setContactOpen(false)}
+          role="presentation"
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-address-title"
+            className="w-full max-w-sm rounded-2xl border border-[#C9962E]/50 bg-black/85 px-6 py-5 text-center shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-md"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p
+              id="contact-address-title"
+              className="mb-2 text-sm font-semibold uppercase tracking-widest text-[#E8C24A]"
+            >
+              Contact Address
+            </p>
+            <p className="text-2xl font-bold uppercase tracking-wide text-white sm:text-3xl">
+              56 ST. NY. NY. 10019
+            </p>
+            <button
+              type="button"
+              onClick={() => setContactOpen(false)}
+              className="mt-5 rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-5 py-2 text-sm font-bold text-black transition-transform hover:scale-[1.03]"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
