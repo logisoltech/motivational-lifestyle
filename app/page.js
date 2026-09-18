@@ -326,6 +326,12 @@ export default function Home() {
                 </a>
               </div>
               <img src="/logo.png" className="max-w-[110px]" alt="" />
+              <a
+                href="#"
+                className="pointer-events-auto mt-3 flex h-9 w-44 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-10 sm:w-48 sm:text-lg"
+              >
+                Financing Available
+              </a>
             </div>
 
             <aside className="text-left">
@@ -383,7 +389,10 @@ export default function Home() {
             >
               Contact Address
             </p>
-            <p className="text-2xl font-bold uppercase tracking-wide text-white sm:text-3xl">
+            <p className="text-lg font-bold uppercase leading-snug tracking-wide text-white sm:text-xl">
+              M.D. MOTIVATIONAL ENTERPRISES LLC – LOCATION
+            </p>
+            <p className="mt-2 text-2xl font-bold uppercase tracking-wide text-white sm:text-3xl">
               56 ST. NY. NY. 10019
             </p>
             <button
