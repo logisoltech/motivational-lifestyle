@@ -1,15 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { textFont } from "./Font/font";
 
 const LEFT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/left-circle-${n}.png`);
 const RIGHT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/right-circle-${n}.png`);
-
-const LEFT_EXTRA_SRC = ["/circle-placeholder.svg", "/circle-placeholder.svg"];
-const RIGHT_EXTRA_SRC = ["/circle-placeholder.svg", "/circle-placeholder.svg"];
 
 /** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
 const LEFT_LINKS = [
@@ -19,8 +14,6 @@ const LEFT_LINKS = [
   "https://government-system-motivational-life.vercel.app/",
 ];
 
-const LEFT_EXTRA_LINKS = [null, null];
-
 /** Order matches right-circle-1 … right-circle-4 (Printer → Energy → Material → Gravity motor). */
 const RIGHT_LINKS = [
   "https://product-printer-motivational-lifest.vercel.app/",
@@ -29,16 +22,12 @@ const RIGHT_LINKS = [
   "https://gravity-motor-motivational-lifestyl.vercel.app/",
 ];
 
-const RIGHT_EXTRA_LINKS = [null, null];
-
 const RIGHT_LABELS = [
   "1 FOR ALL 3D PRODUCTS PRINTER/RECYCLER EQUALIZER",
   "1 DRINK-FOOD-DIET-ENERGY",
   "1 MATERIAL FOR ALL PRODUCTS (NON-EDIBLE)",
   "1 ENERGY GRAVITY MOTOR",
 ];
-
-const RIGHT_EXTRA_LABELS = ["MINI MRI-XRAY", "SPEEDY BIRTH"];
 
 /** Order matches left-circle-1 … left-circle-4 (Cityopia → Flyer → Thinker → Government). */
 const LEFT_LABELS = [
@@ -47,8 +36,6 @@ const LEFT_LABELS = [
   "1 HALO/THINKER/IMMUNIZER/PROTECTION - FOR ALL INFO & HEALTH",
   "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
 ];
-
-const LEFT_EXTRA_LABELS = ["GRAVITY BELT", "EARTH MOTOR"];
 
 function curveOffsetTowardCenterRem(i, maxRem, lastIndex = 3) {
   const t = Math.sin((Math.PI * i) / lastIndex);
@@ -121,14 +108,6 @@ export default function Home() {
   const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
-
-  useEffect(() => {
     const logoOutMs = 2500;
     const logoFadeMs = 800;
     const pauseAfterLogoMs = 2000;
@@ -151,20 +130,12 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!transitioned) return;
-    const id = requestAnimationFrame(() => {
-      AOS.refresh();
-    });
-    return () => cancelAnimationFrame(id);
-  }, [transitioned]);
-
   return (
     <div
-      className="relative w-full overflow-x-hidden bg-cover bg-top bg-no-repeat"
+      className="page-scroll relative w-full bg-cover bg-top bg-no-repeat"
       style={{
         backgroundImage: "url('/2.jpeg')",
-        minHeight: "100dvh",
+        minHeight: "100%",
       }}
     >
       {/* Background 1 — intro overlay, pinned to viewport during the opening */}
@@ -186,19 +157,16 @@ export default function Home() {
       )}
 
       {/* Keep page at least one viewport tall during intro before circles mount */}
-      {!transitioned && <div className="min-h-[100dvh]" aria-hidden />}
+      {!transitioned && <div className="h-full min-h-full" aria-hidden />}
 
-      {/* Side Circles — original 4 in the main curve, extras only at the bottom */}
+      {/* Side Circles — original 4 in the main curve */}
       {transitioned && (
-        <div className="pointer-events-none relative z-[15] mt-2 flex flex-col pt-[min(14vh,5rem)] pb-16 sm:pt-[min(16vh,6rem)] sm:pb-20 md:px-2 md:pt-[min(18vh,7rem)] md:pb-24">
+        <div className="pointer-events-none relative z-[15] flex flex-col pt-[min(14vh,5rem)] pb-16 sm:pt-[min(16vh,6rem)] sm:pb-20 md:px-2 md:pt-[min(18vh,7rem)] md:pb-24">
           
           <div className="flex justify-between px-2 sm:px-4 md:px-8">
 
             {/* LEFT SIDE */}
-            <div
-              data-aos="fade-right"
-              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2"
-            >
+            <div className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2">
               {LEFT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={`left-${i}`}
@@ -216,29 +184,10 @@ export default function Home() {
                   />
                 </div>
               ))}
-              {LEFT_EXTRA_SRC.map((src, i) => (
-                <div
-                  key={`left-extra-${i}`}
-                  className="flex w-full shrink-0 flex-col items-center"
-                  style={{
-                    transform: `translateX(${curveOffsetTowardCenterRem(i + 4, LEFT_CURVE_MAX_REM, 5)}rem)`,
-                  }}
-                >
-                  <SideThumb
-                    src={src}
-                    href={LEFT_EXTRA_LINKS[i]}
-                    compact
-                    caption={LEFT_EXTRA_LABELS[i]}
-                  />
-                </div>
-              ))}
             </div>
 
             {/* RIGHT SIDE */}
-            <div
-              data-aos="fade-left"
-              className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2"
-            >
+            <div className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2">
               {RIGHT_CIRCLE_SRC.map((src, i) => (
                 <div
                   key={`right-${i}`}
@@ -255,24 +204,34 @@ export default function Home() {
                   />
                 </div>
               ))}
-              {RIGHT_EXTRA_SRC.map((src, i) => (
-                <div
-                  key={`right-extra-${i}`}
-                  className="flex w-full shrink-0 flex-col items-center"
-                  style={{
-                    transform: `translateX(${-curveOffsetTowardCenterRem(i + 4, RIGHT_CURVE_MAX_REM, 5)}rem)`,
-                  }}
-                >
-                  <SideThumb
-                    src={src}
-                    href={RIGHT_EXTRA_LINKS[i]}
-                    compact
-                    caption={RIGHT_EXTRA_LABELS[i]}
-                  />
-                </div>
-              ))}
             </div>
 
+          </div>
+
+          {/* Center Future Products circle — below the main side rails */}
+          <div className="mt-8 flex flex-col items-center gap-2 sm:mt-10 md:mt-12">
+            <img
+              src="/circle-placeholder.svg"
+              alt=""
+              className="h-[140px] w-[140px] object-contain sm:h-[170px] sm:w-[170px] md:h-[200px] md:w-[200px]"
+            />
+            <p
+              className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-4 py-2 text-center text-sm font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-base md:text-lg`}
+            >
+              Future Products
+            </p>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:mt-4 sm:gap-3">
+              {["GRAVITY BELT", "EARTH MOTOR", "MINI MRI-XRAY", "SPEEDY BIRTH"].map(
+                (label) => (
+                  <p
+                    key={label}
+                    className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-3 py-1.5 text-center text-[11px] font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-xs md:text-sm`}
+                  >
+                    {label}
+                  </p>
+                ),
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -280,10 +239,7 @@ export default function Home() {
       {/* Top Branding */}
       {transitioned && (
         <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 select-none px-2 pt-2 pb-4 sm:px-3 sm:pt-3">
-          <div
-            className="grid w-full grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8"
-            data-aos="fade-down"
-          >
+          <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8">
             <aside className="text-left">
               <h2 className="text-lg font-bold uppercase">
                 1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS

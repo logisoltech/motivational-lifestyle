@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #1a2a28;
   --foreground: #171717;
 }
 
@@ -14,26 +14,35 @@
   --font-glass: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
-.s {
-  
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background: #1a2a28;
     --foreground: #171717;
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-advent-pro), ui-sans-serif, system-ui, sans-serif;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a2a28;
 }
 
-html {
+body {
+  color: var(--foreground);
+  font-family: var(--font-advent-pro), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Single scroll surface for the whole site */
+.page-scroll {
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: none;
 }
 
 @keyframes slow-zoom {
@@ -60,6 +69,7 @@ html {
   vertical-align: 0.14em;
   transform: translateY(2px);
 }
+
 .banner-side .banner-heading,
 .banner-side .banner-body {
   text-shadow:
@@ -75,5 +85,5 @@ html {
 }
 
 .img-background {
-  background-position: 10vh
+  background-position: 10vh;
 }

@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${adventPro.variable} ${textFont.variable} antialiased`}
     >
-      <body className="min-h-dvh overflow-x-hidden font-sans">{children}</body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
