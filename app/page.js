@@ -37,6 +37,25 @@ const LEFT_LABELS = [
   "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
 ];
 
+const FUTURE_PRODUCTS = [
+  {
+    title: "GRAVITY BELT",
+    body: "DEFIES GRAVITY",
+  },
+  {
+    title: "MINI MRI-XRAY",
+    body: "JUST PLACE IT ON YOUR BODY AND SEE INSIDE WITH A 4 INCH ROUND LENS.",
+  },
+  {
+    title: "SPEEDY BIRTH",
+    body: "WITH ALL THIS TECHNOLOGY WE ARE FINALLY DEVELOPING SPECIFICALLY FOR OUR WOMEN AND THE FUTURE OF SOCIETY A WAY FOR OUR WOMEN TO HAVE A SHORTER PREGNANCY TERM OR GESTATION PERIOD. INSTEAD OF 6 MONTHS WE MAY BE ABLE TO REDUCE TO 45 DAYS.",
+  },
+  {
+    title: "EARTH MOTOR",
+    body: "EARTH SPIN IS LIKE A MAGNET WITH REVOLUTIONS IN ATMOSPHERE IS STATIONARY POLES TO GENERATE ELECTRICITY FOR FREE FOREVER",
+  },
+];
+
 function curveOffsetTowardCenterRem(i, maxRem, lastIndex = 3) {
   const t = Math.sin((Math.PI * i) / lastIndex);
   return maxRem * (1 - t);
@@ -106,6 +125,7 @@ export default function Home() {
   const [zoomStarted, setZoomStarted] = useState(false);
   const [transitioned, setTransitioned] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [futureProductsOpen, setFutureProductsOpen] = useState(false);
 
   useEffect(() => {
     const logoOutMs = 2500;
@@ -220,18 +240,13 @@ export default function Home() {
             >
               Future Products
             </p>
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:mt-4 sm:gap-3">
-              {["GRAVITY BELT", "EARTH MOTOR", "MINI MRI-XRAY", "SPEEDY BIRTH"].map(
-                (label) => (
-                  <p
-                    key={label}
-                    className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-3 py-1.5 text-center text-[11px] font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-xs md:text-sm`}
-                  >
-                    {label}
-                  </p>
-                ),
-              )}
-            </div>
+            <button
+              type="button"
+              onClick={() => setFutureProductsOpen(true)}
+              className={`${textFont.className} pointer-events-auto mt-2 max-w-[min(92vw,36rem)] whitespace-normal rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform hover:scale-[1.02] sm:mt-3 sm:px-5 sm:text-xs md:text-sm`}
+            >
+              GRAVITY BELT · EARTH MOTOR · MINI MRI-XRAY · SPEEDY BIRTH
+            </button>
           </div>
         </div>
       )}
@@ -313,7 +328,7 @@ export default function Home() {
                   </svg>
                 </button>
               </div>
-              <p className="mt-1 max-w-xl text-[14px] font-semibold uppercase leading-snug">
+              <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
                 NO SHOPPING, CONSTRUCTING, STORAGE
                 <span className="big-period" aria-hidden="true" />
                 <br />
@@ -358,6 +373,50 @@ export default function Home() {
             >
               Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {futureProductsOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+          onClick={() => setFutureProductsOpen(false)}
+          role="presentation"
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="future-products-title"
+            className="max-h-[85dvh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#C9962E]/50 bg-black/90 px-6 py-6 text-left shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-md sm:px-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2
+              id="future-products-title"
+              className="mb-6 text-center text-xl font-bold uppercase tracking-wide text-[#E8C24A] sm:text-2xl"
+            >
+              Future Products
+            </h2>
+            <div className="flex flex-col gap-5">
+              {FUTURE_PRODUCTS.map((item) => (
+                <div key={item.title}>
+                  <h3 className="text-base font-bold uppercase tracking-wide text-white sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold uppercase leading-snug text-white/90 sm:text-[15px]">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setFutureProductsOpen(false)}
+                className="rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-5 py-2 text-sm font-bold text-black transition-transform hover:scale-[1.03]"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
