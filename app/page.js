@@ -299,39 +299,37 @@ export default function Home() {
               <img src="/logo.png" className="max-w-[110px]" alt="" />
             </div>
 
-            <aside className="text-left">
-              <div className="flex items-center gap-2">
-                <h2 className="min-w-0 whitespace-nowrap text-xl font-bold uppercase">
-                  Self sufficient Free & Easy AI Products
-                </h2>
-                <div className="ml-auto flex shrink-0 items-center gap-2">
-                  <a
-                    href="#"
-                    className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-xs font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-sm"
+            <aside className="relative text-left">
+              <h2 className="whitespace-nowrap text-xl font-bold uppercase leading-none">
+                Self sufficient Free & Easy AI Products
+              </h2>
+              <div className="absolute top-0 right-0 flex items-center gap-2">
+                <a
+                  href="#"
+                  className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-xs font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-sm"
+                >
+                  Financing
+                </a>
+                <button
+                  type="button"
+                  aria-label="Contact address"
+                  onClick={() => setContactOpen(true)}
+                  className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#B8860B] transition-transform hover:scale-110 hover:text-[#9A7209]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-7 w-7"
+                    aria-hidden="true"
                   >
-                    Financing
-                  </a>
-                  <button
-                    type="button"
-                    aria-label="Contact address"
-                    onClick={() => setContactOpen(true)}
-                    className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#B8860B] transition-transform hover:scale-110 hover:text-[#9A7209]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-7 w-7"
-                      aria-hidden="true"
-                    >
-                      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" />
-                      <path d="M7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z" />
-                    </svg>
-                  </button>
-                </div>
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" />
+                    <path d="M7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z" />
+                  </svg>
+                </button>
               </div>
               <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
-                NO SHOPPING, CONSTRUCTING, STORAGE
+                <span className="text-[18px] font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
                 <span className="big-period" aria-hidden="true" />
                 <br />
                 EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
