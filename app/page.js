@@ -306,7 +306,7 @@ export default function Home() {
               <div className="absolute top-0 right-0 flex items-center gap-2">
                 <a
                   href="#"
-                  className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-xs font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-sm"
+                  className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-sm font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-base"
                 >
                   Financing
                 </a>
@@ -329,7 +329,7 @@ export default function Home() {
                 </button>
               </div>
               <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
-                <span className="text-[18px] font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
+                <span className="text-xl font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
                 <span className="big-period" aria-hidden="true" />
                 <br />
                 EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
