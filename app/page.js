@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MdCall } from "react-icons/md";
+import { FaEnvelope } from "react-icons/fa";
 import { textFont } from "./Font/font";
 
 const LEFT_CIRCLE_SRC = [1, 2, 3, 4].map((n) => `/left-circle-${n}.png`);
@@ -317,7 +317,7 @@ export default function Home() {
                   onClick={() => setContactOpen(true)}
                   className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#B8860B] transition-transform hover:scale-110 hover:text-[#9A7209]"
                 >
-                  <MdCall className="h-7 w-7" aria-hidden="true" />
+                  <FaEnvelope className="h-7 w-7" aria-hidden="true" />
                 </button>
               </div>
               <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
