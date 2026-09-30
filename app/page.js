@@ -152,186 +152,183 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className="page-scroll relative w-full bg-cover bg-top bg-no-repeat"
-      style={{
-        backgroundImage: "url('/2.jpeg')",
-        minHeight: "100%",
-      }}
-    >
-      {/* Background 1 — intro overlay, pinned to viewport during the opening */}
-      {!transitioned && (
-        <div
-          className={`fixed inset-0 z-30 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
-          style={{
-            backgroundImage: "url('/1.png')",
-            opacity: transitioned ? 0 : 1,
-          }}
+    <div className="page-scroll relative w-full">
+      {/* Full 2.jpeg in flow — page height = image height (no crop); UI overlays it */}
+      <div className="relative w-full">
+        <img
+          src="/2.jpeg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none relative z-0 block h-auto w-full select-none"
         />
-      )}
 
-      {/* Logo — pinned to viewport during the opening */}
-      {!transitioned && (
-        <div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center">
-          <OpeningLogo zoomStarted={zoomStarted} />
-        </div>
-      )}
+        {/* Background 1 — intro overlay, pinned to viewport during the opening */}
+        {!transitioned && (
+          <div
+            className={`fixed inset-0 z-30 overflow-hidden bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${zoomStarted ? "animate-slow-zoom" : ""}`}
+            style={{
+              backgroundImage: "url('/1.png')",
+              opacity: transitioned ? 0 : 1,
+            }}
+          />
+        )}
 
-      {/* Keep page at least one viewport tall during intro before circles mount */}
-      {!transitioned && <div className="h-full min-h-full" aria-hidden />}
+        {/* Logo — pinned to viewport during the opening */}
+        {!transitioned && (
+          <div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center">
+            <OpeningLogo zoomStarted={zoomStarted} />
+          </div>
+        )}
 
-      {/* Side Circles — original 4 in the main curve */}
-      {transitioned && (
-        <div className="pointer-events-none relative z-[15] flex flex-col pt-[min(14vh,5rem)] pb-16 sm:pt-[min(16vh,6rem)] sm:pb-20 md:px-2 md:pt-[min(18vh,7rem)] md:pb-24">
-          
-          <div className="flex justify-between px-2 sm:px-4 md:px-8">
+        {/* Side Circles + Future Products — overlaid on the full image */}
+        {transitioned && (
+          <div className="pointer-events-none absolute inset-0 z-[15] flex flex-col pt-[min(14vh,5rem)] pb-4 sm:pb-6 md:px-2 md:pb-8">
+            <div className="flex min-h-0 flex-1 justify-between px-2 sm:px-4 md:px-8">
+              {/* LEFT SIDE */}
+              <div className="flex w-[min(92vw,22rem)] shrink-0 flex-col justify-evenly gap-y-1">
+                {LEFT_CIRCLE_SRC.map((src, i) => (
+                  <div
+                    key={`left-${i}`}
+                    className="flex w-full shrink-0 flex-col items-center"
+                    style={{
+                      transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM, 3)}rem)`,
+                    }}
+                  >
+                    <SideThumb
+                      src={src}
+                      href={LEFT_LINKS[i]}
+                      compact
+                      caption={LEFT_LABELS[i]}
+                      captionShiftRem={i === 2 ? 3 : 0}
+                    />
+                  </div>
+                ))}
+              </div>
 
-            {/* LEFT SIDE */}
-            <div className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2">
-              {LEFT_CIRCLE_SRC.map((src, i) => (
-                <div
-                  key={`left-${i}`}
-                  className="flex w-full shrink-0 flex-col items-center"
-                  style={{
-                    transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM, 3)}rem)`,
-                  }}
-                >
-                  <SideThumb
-                    src={src}
-                    href={LEFT_LINKS[i]}
-                    compact
-                    caption={LEFT_LABELS[i]}
-                    captionShiftRem={i === 2 ? 3 : 0}
-                  />
-                </div>
-              ))}
+              {/* RIGHT SIDE */}
+              <div className="flex w-[min(92vw,22rem)] shrink-0 flex-col justify-evenly gap-y-1">
+                {RIGHT_CIRCLE_SRC.map((src, i) => (
+                  <div
+                    key={`right-${i}`}
+                    className="flex w-full shrink-0 flex-col items-center"
+                    style={{
+                      transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM, 3)}rem)`,
+                    }}
+                  >
+                    <SideThumb
+                      src={src}
+                      href={RIGHT_LINKS[i]}
+                      compact
+                      caption={RIGHT_LABELS[i]}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* RIGHT SIDE */}
-            <div className="-mt-0 flex w-[min(92vw,22rem)] shrink-0 flex-col gap-y-2">
-              {RIGHT_CIRCLE_SRC.map((src, i) => (
-                <div
-                  key={`right-${i}`}
-                  className="flex w-full shrink-0 flex-col items-center"
-                  style={{
-                    transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM, 3)}rem)`,
-                  }}
-                >
-                  <SideThumb
-                    src={src}
-                    href={RIGHT_LINKS[i]}
-                    compact
-                    caption={RIGHT_LABELS[i]}
-                  />
-                </div>
-              ))}
-            </div>
-
-          </div>
-
-          {/* Center Future Products circle — below the main side rails */}
-          <div className="mt-8 flex flex-col items-center gap-2 sm:mt-10 md:mt-12">
-            <img
-              src="/circle-placeholder.svg"
-              alt=""
-              className="h-[140px] w-[140px] object-contain sm:h-[170px] sm:w-[170px] md:h-[200px] md:w-[200px]"
-            />
-            <p
-              className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-4 py-2 text-center text-sm font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-base md:text-lg`}
-            >
-              Future Products
-            </p>
-            <button
-              type="button"
-              onClick={() => setFutureProductsOpen(true)}
-              className={`${textFont.className} pointer-events-auto mt-2 max-w-[min(92vw,36rem)] whitespace-normal rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform hover:scale-[1.02] sm:mt-3 sm:px-5 sm:text-xs md:text-sm`}
-            >
-              GRAVITY BELT · EARTH MOTOR · MINI MRI-XRAY · SPEEDY BIRTH
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Top Branding */}
-      {transitioned && (
-        <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 select-none px-2 pt-2 pb-4 sm:px-3 sm:pt-3">
-          <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8">
-            <aside className="text-left">
-              <h2 className="text-lg font-bold uppercase">
-                1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
-              </h2>
-              <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
-                THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
-              </p>
-            </aside>
-
-            <div className="flex flex-col items-center text-center">
+            {/* Center Future Products — bottom of the image, not below it */}
+            <div className="flex shrink-0 flex-col items-center gap-2">
               <img
-                src="/invest-.png"
-                alt="Invest in self-sufficiency"
-                className="mb-1 max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem]"
+                src="/circle-placeholder.svg"
+                alt=""
+                className="h-[140px] w-[140px] object-contain sm:h-[170px] sm:w-[170px] md:h-[200px] md:w-[200px]"
               />
-              <p className="mb-2 max-w-[18rem] text-base font-bold uppercase leading-snug tracking-wide text-black sm:max-w-[20rem] sm:text-lg md:mb-3 md:max-w-[22rem] md:text-xl">
-                & THE FUTURE FOR RESEARCH &
-                <br />
-                HUMANITY
-                <span className="big-period" aria-hidden="true" /> PROFIT WHILE
-                FUNDING
-                <br />
-                THE FINAL LIFESTYLE & PRODUCTS
-                <span className="big-period" aria-hidden="true" />
+              <p
+                className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-4 py-2 text-center text-sm font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-base md:text-lg`}
+              >
+                Future Products
               </p>
-              {/* <p className="text-lg font-bold ">M.D. 111</p> */}
-              <div className="relative mb-2 flex items-center justify-center">
-                <a
-                  href="#"
-                  className="pointer-events-auto absolute right-full mr-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:mr-3 sm:h-10 sm:w-40 sm:text-lg"
-                >
-                  Invest / Donate
-                </a>
-                <img src="/md-1.png" className="max-w-[80px] shrink-0" alt="M.D. 1.1.1" />
-                <a
-                  href="#"
-                  className="pointer-events-auto absolute left-full ml-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:ml-3 sm:h-10 sm:w-40 sm:text-lg"
-                >
-                  Buy M.D Crypto
-                </a>
-              </div>
-              <img src="/logo.png" className="max-w-[110px]" alt="" />
+              <button
+                type="button"
+                onClick={() => setFutureProductsOpen(true)}
+                className={`${textFont.className} pointer-events-auto mt-2 max-w-[min(92vw,36rem)] whitespace-normal rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform hover:scale-[1.02] sm:mt-3 sm:px-5 sm:text-xs md:text-sm`}
+              >
+                GRAVITY BELT · EARTH MOTOR · MINI MRI-XRAY · SPEEDY BIRTH
+              </button>
             </div>
-
-            <aside className="relative text-left">
-              <h2 className="whitespace-nowrap text-xl font-bold uppercase leading-none">
-                Self sufficient Free & Easy AI Products
-              </h2>
-              <div className="absolute top-0 right-0 flex items-center gap-2">
-                <a
-                  href="#"
-                  className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-sm font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-base"
-                >
-                  Financing
-                </a>
-                <button
-                  type="button"
-                  aria-label="Contact address"
-                  onClick={() => setContactOpen(true)}
-                  className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#E8C24A] transition-transform hover:scale-110 hover:text-[#C9962E]"
-                >
-                  <FaEnvelope className="h-7 w-7" aria-hidden="true" />
-                </button>
-              </div>
-              <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
-                <span className="text-xl font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
-                <span className="big-period" aria-hidden="true" />
-                <br />
-                EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
-                YOU NEED IT<span className="big-period" aria-hidden="true" /> WE
-                DO IT ALL FOR YOU
-              </p>
-            </aside>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Top Branding */}
+        {transitioned && (
+          <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 select-none px-2 pt-2 pb-4 sm:px-3 sm:pt-3">
+            <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8">
+              <aside className="text-left">
+                <h2 className="text-lg font-bold uppercase">
+                  1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
+                </h2>
+                <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
+                  THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
+                </p>
+              </aside>
+
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="/invest-.png"
+                  alt="Invest in self-sufficiency"
+                  className="mb-1 max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem]"
+                />
+                <p className="mb-2 max-w-[18rem] text-base font-bold uppercase leading-snug tracking-wide text-black sm:max-w-[20rem] sm:text-lg md:mb-3 md:max-w-[22rem] md:text-xl">
+                  & THE FUTURE FOR RESEARCH &
+                  <br />
+                  HUMANITY
+                  <span className="big-period" aria-hidden="true" /> PROFIT WHILE
+                  FUNDING
+                  <br />
+                  THE FINAL LIFESTYLE & PRODUCTS
+                  <span className="big-period" aria-hidden="true" />
+                </p>
+                <div className="relative mb-2 flex items-center justify-center">
+                  <a
+                    href="#"
+                    className="pointer-events-auto absolute right-full mr-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:mr-3 sm:h-10 sm:w-40 sm:text-lg"
+                  >
+                    Invest / Donate
+                  </a>
+                  <img src="/md-1.png" className="max-w-[80px] shrink-0" alt="M.D. 1.1.1" />
+                  <a
+                    href="#"
+                    className="pointer-events-auto absolute left-full ml-2 flex h-9 w-36 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-3 text-center text-base font-bold leading-none text-black shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:ml-3 sm:h-10 sm:w-40 sm:text-lg"
+                  >
+                    Buy M.D Crypto
+                  </a>
+                </div>
+                <img src="/logo.png" className="max-w-[110px]" alt="" />
+              </div>
+
+              <aside className="relative text-left">
+                <h2 className="whitespace-nowrap text-xl font-bold uppercase leading-none">
+                  Self sufficient Free & Easy AI Products
+                </h2>
+                <div className="absolute top-0 right-0 flex items-center gap-2">
+                  <a
+                    href="#"
+                    className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-sm font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-base"
+                  >
+                    Financing
+                  </a>
+                  <button
+                    type="button"
+                    aria-label="Contact address"
+                    onClick={() => setContactOpen(true)}
+                    className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#E8C24A] transition-transform hover:scale-110 hover:text-[#C9962E]"
+                  >
+                    <FaEnvelope className="h-7 w-7" aria-hidden="true" />
+                  </button>
+                </div>
+                <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
+                  <span className="text-xl font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
+                  <span className="big-period" aria-hidden="true" />
+                  <br />
+                  EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
+                  YOU NEED IT<span className="big-period" aria-hidden="true" /> WE
+                  DO IT ALL FOR YOU
+                </p>
+              </aside>
+            </div>
+          </div>
+        )}
+      </div>
 
       {contactOpen && (
         <div
