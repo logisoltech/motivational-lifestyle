@@ -35,7 +35,7 @@ const LEFT_LABELS = [
   "CITYOPIA- 1 FOR ALL FUTURE CITY",
   "1 FLYER IFFO PARK GO/LIVE/PLAY ANYWHERE",
   "1 HALO/THINKER/IMMUNIZER/PROTECTION - FOR ALL INFO & HEALTH",
-  "1 GOVERNMENT FAIR SYSTEM/SOFTWARE",
+  "1 GOVERNMENT FAIR SYSTEM/SOFTWARE/CRYPTO",
 ];
 
 const FUTURE_PRODUCTS = [
@@ -315,7 +315,7 @@ export default function Home() {
                   type="button"
                   aria-label="Contact address"
                   onClick={() => setContactOpen(true)}
-                  className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#B8860B] transition-transform hover:scale-110 hover:text-[#9A7209]"
+                  className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#E8C24A] transition-transform hover:scale-110 hover:text-[#C9962E]"
                 >
                   <FaEnvelope className="h-7 w-7" aria-hidden="true" />
                 </button>
