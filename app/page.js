@@ -180,89 +180,43 @@ export default function Home() {
           </div>
         )}
 
-        {/* Side Circles + Future Products — overlaid on the full image */}
+        {/* Branding + circles + Future Products — side icons sit under their own copy only */}
         {transitioned && (
-          <div className="pointer-events-none absolute inset-0 z-[15] flex flex-col pt-[min(14vh,5rem)] pb-4 sm:pb-6 md:px-2 md:pb-8">
-            <div className="flex min-h-0 flex-1 justify-between px-2 sm:px-4 md:px-8">
-              {/* LEFT SIDE */}
-              <div className="flex w-[min(92vw,22rem)] shrink-0 flex-col justify-evenly gap-y-1">
-                {LEFT_CIRCLE_SRC.map((src, i) => (
-                  <div
-                    key={`left-${i}`}
-                    className="flex w-full shrink-0 flex-col items-center"
-                    style={{
-                      transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM, 3)}rem)`,
-                    }}
-                  >
-                    <SideThumb
-                      src={src}
-                      href={LEFT_LINKS[i]}
-                      compact
-                      caption={LEFT_LABELS[i]}
-                      captionShiftRem={i === 2 ? 3 : 0}
-                    />
-                  </div>
-                ))}
+          <div className="pointer-events-none absolute inset-0 z-[15] flex flex-col px-2 pb-4 pt-2 sm:px-3 sm:pb-6 sm:pt-3 md:px-4 md:pb-8">
+            <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-stretch md:gap-4 lg:gap-8">
+              {/* LEFT — copy then icons */}
+              <div className="flex min-h-0 flex-col">
+                <aside className="shrink-0 text-left">
+                  <h2 className="text-lg font-bold uppercase">
+                    1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
+                  </h2>
+                  <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
+                    THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
+                  </p>
+                </aside>
+                <div className="mt-3 flex min-h-0 w-[min(92vw,22rem)] flex-1 flex-col justify-evenly gap-y-1 self-center md:self-start">
+                  {LEFT_CIRCLE_SRC.map((src, i) => (
+                    <div
+                      key={`left-${i}`}
+                      className="flex w-full shrink-0 flex-col items-center"
+                      style={{
+                        transform: `translateX(${curveOffsetTowardCenterRem(i, LEFT_CURVE_MAX_REM, 3)}rem)`,
+                      }}
+                    >
+                      <SideThumb
+                        src={src}
+                        href={LEFT_LINKS[i]}
+                        compact
+                        caption={LEFT_LABELS[i]}
+                        captionShiftRem={i === 2 ? 3 : 0}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* RIGHT SIDE */}
-              <div className="flex w-[min(92vw,22rem)] shrink-0 flex-col justify-evenly gap-y-1">
-                {RIGHT_CIRCLE_SRC.map((src, i) => (
-                  <div
-                    key={`right-${i}`}
-                    className="flex w-full shrink-0 flex-col items-center"
-                    style={{
-                      transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM, 3)}rem)`,
-                    }}
-                  >
-                    <SideThumb
-                      src={src}
-                      href={RIGHT_LINKS[i]}
-                      compact
-                      caption={RIGHT_LABELS[i]}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Center Future Products — bottom of the image, not below it */}
-            <div className="flex shrink-0 flex-col items-center gap-2">
-              <img
-                src="/circle-placeholder.svg"
-                alt=""
-                className="h-[140px] w-[140px] object-contain sm:h-[170px] sm:w-[170px] md:h-[200px] md:w-[200px]"
-              />
-              <p
-                className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-4 py-2 text-center text-sm font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-base md:text-lg`}
-              >
-                Future Products
-              </p>
-              <button
-                type="button"
-                onClick={() => setFutureProductsOpen(true)}
-                className={`${textFont.className} pointer-events-auto mt-2 max-w-[min(92vw,36rem)] whitespace-normal rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform hover:scale-[1.02] sm:mt-3 sm:px-5 sm:text-xs md:text-sm`}
-              >
-                GRAVITY BELT · EARTH MOTOR · MINI MRI-XRAY · SPEEDY BIRTH
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Top Branding */}
-        {transitioned && (
-          <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 select-none px-2 pt-2 pb-4 sm:px-3 sm:pt-3">
-            <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4 lg:gap-8">
-              <aside className="text-left">
-                <h2 className="text-lg font-bold uppercase">
-                  1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
-                </h2>
-                <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
-                  THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
-                </p>
-              </aside>
-
-              <div className="flex flex-col items-center text-center">
+              {/* CENTER branding */}
+              <div className="flex shrink-0 flex-col items-center text-center">
                 <img
                   src="/invest-.png"
                   alt="Invest in self-sufficiency"
@@ -296,35 +250,77 @@ export default function Home() {
                 <img src="/logo.png" className="max-w-[110px]" alt="" />
               </div>
 
-              <aside className="relative text-left">
-                <h2 className="whitespace-nowrap text-xl font-bold uppercase leading-none">
-                  Self sufficient Free & Easy AI Products
-                </h2>
-                <div className="absolute top-0 right-0 flex items-center gap-2">
-                  <a
-                    href="#"
-                    className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-sm font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-base"
-                  >
-                    Financing
-                  </a>
-                  <button
-                    type="button"
-                    aria-label="Contact address"
-                    onClick={() => setContactOpen(true)}
-                    className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#E8C24A] transition-transform hover:scale-110 hover:text-[#C9962E]"
-                  >
-                    <FaEnvelope className="h-7 w-7" aria-hidden="true" />
-                  </button>
+              {/* RIGHT — copy then icons */}
+              <div className="flex min-h-0 flex-col">
+                <aside className="relative shrink-0 text-left">
+                  <h2 className="whitespace-nowrap text-xl font-bold uppercase leading-none">
+                    Self sufficient Free & Easy AI Products
+                  </h2>
+                  <div className="absolute top-0 right-0 flex items-center gap-2">
+                    <a
+                      href="#"
+                      className="pointer-events-auto flex h-8 items-center justify-center rounded-full bg-gradient-to-b from-[#F5D97B] via-[#E8C24A] to-[#C9962E] px-4 text-center text-sm font-bold leading-none text-black shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-transform hover:scale-[1.03] sm:h-9 sm:px-5 sm:text-base"
+                    >
+                      Financing
+                    </a>
+                    <button
+                      type="button"
+                      aria-label="Contact address"
+                      onClick={() => setContactOpen(true)}
+                      className="pointer-events-auto shrink-0 rounded-full p-1.5 text-[#E8C24A] transition-transform hover:scale-110 hover:text-[#C9962E]"
+                    >
+                      <FaEnvelope className="h-7 w-7" aria-hidden="true" />
+                    </button>
+                  </div>
+                  <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
+                    <span className="text-xl font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
+                    <span className="big-period" aria-hidden="true" />
+                    <br />
+                    EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
+                    YOU NEED IT<span className="big-period" aria-hidden="true" /> WE
+                    DO IT ALL FOR YOU
+                  </p>
+                </aside>
+                <div className="mt-3 flex min-h-0 w-[min(92vw,22rem)] flex-1 flex-col justify-evenly gap-y-1 self-center md:self-end">
+                  {RIGHT_CIRCLE_SRC.map((src, i) => (
+                    <div
+                      key={`right-${i}`}
+                      className="flex w-full shrink-0 flex-col items-center"
+                      style={{
+                        transform: `translateX(${-curveOffsetTowardCenterRem(i, RIGHT_CURVE_MAX_REM, 3)}rem)`,
+                      }}
+                    >
+                      <SideThumb
+                        src={src}
+                        href={RIGHT_LINKS[i]}
+                        compact
+                        caption={RIGHT_LABELS[i]}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <p className="mt-1 max-w-xl text-[16px] font-semibold uppercase leading-snug">
-                  <span className="text-xl font-bold">NO SHOPPING, CONSTRUCTING, STORAGE</span>
-                  <span className="big-period" aria-hidden="true" />
-                  <br />
-                  EQUALIZERS CREATE ANY STYLE, TASTE, FUNCTION YOU DESIRE WHEN
-                  YOU NEED IT<span className="big-period" aria-hidden="true" /> WE
-                  DO IT ALL FOR YOU
-                </p>
-              </aside>
+              </div>
+            </div>
+
+            {/* Center Future Products — bottom of the image */}
+            <div className="flex shrink-0 flex-col items-center gap-2 pt-2">
+              <img
+                src="/circle-placeholder.svg"
+                alt=""
+                className="h-[140px] w-[140px] object-contain sm:h-[170px] sm:w-[170px] md:h-[200px] md:w-[200px]"
+              />
+              <p
+                className={`${textFont.className} whitespace-nowrap rounded-full border border-white/15 bg-black/55 px-4 py-2 text-center text-sm font-semibold uppercase leading-none tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md sm:text-base md:text-lg`}
+              >
+                Future Products
+              </p>
+              <button
+                type="button"
+                onClick={() => setFutureProductsOpen(true)}
+                className={`${textFont.className} pointer-events-auto mt-2 max-w-[min(92vw,36rem)] whitespace-normal rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-wide text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_14px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform hover:scale-[1.02] sm:mt-3 sm:px-5 sm:text-xs md:text-sm`}
+              >
+                GRAVITY BELT · EARTH MOTOR · MINI MRI-XRAY · SPEEDY BIRTH
+              </button>
             </div>
           </div>
         )}
