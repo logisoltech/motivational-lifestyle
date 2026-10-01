@@ -187,10 +187,10 @@ export default function Home() {
               {/* LEFT — copy then icons */}
               <div className="flex min-h-0 flex-col">
                 <aside className="shrink-0 text-left">
-                  <h2 className="text-lg font-bold uppercase">
-                    1 FOR ALL MOTIVATIONAL LIFESTYLE LIFE INGREDIENT & SYSTEMS
+                  <h2 className="text-lg font-bold uppercase leading-none">
+                    1 FOR ALL MOTIVATIONAL LIFESTYLE-LIFE INGREDIENTS & SYSTEMS
                   </h2>
-                  <p className="max-w-3xl text-[14px] font-semibold uppercase leading-snug">
+                  <p className="mt-1 max-w-3xl text-[15px] font-semibold uppercase leading-snug">
                     THE FINAL PRODUCTS<span className="big-period" aria-hidden="true" /> WE SOLVED ALL OUR PROBLEMS<span className="big-period" aria-hidden="true" /> ALL PURPOSE ONE FOR ALL INGREDIENTS, PRODUCTS, CREATIONS<span className="big-period" aria-hidden="true" /> PRODUCE/RECYCLE WITH WHATEVER<br/>ALL LIFE INGREDIENTS & ELEMENTS TO LIVE SAFER, HEALTHIER, BETTER AND LONGER<span className="big-period" aria-hidden="true" /> SELF-SUFFICIENCY AND FREEDOM FOR EVERYONE<span className="big-period" aria-hidden="true" />
                   </p>
                 </aside>
